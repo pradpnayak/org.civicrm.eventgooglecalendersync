@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<menu>
+  <item>
+    <path>civicrm/googlecal/settings</path>
+    <page_callback>CRM_Eventgooglecalendersync_Form_Setting</page_callback>
+    <title>Google-CiviCRM Cal Sync Settings</title>
+    <access_arguments>administer CiviCRM</access_arguments>
+  </item>
+</menu>
