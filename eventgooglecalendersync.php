@@ -158,14 +158,19 @@ function eventgooglecalendersync_civicrm_pre($op, $objectName, $id, &$params) {
         }
       }
       else {
-        $events = civicrm_api3('event', 'getsingle', [
-          'id' => $id,
-          'return' => array('start_date', 'end_date')
-        ]);
-        // TODO::
-        // check date diff
-        // add to $eventStartEndDates
-        $createUpdateGCal = TRUE;
+        $events = civicrm_api3('event', 'getsingle', ['id' => $id]);
+        foreach ([
+          'title',
+          'description',
+          'start_date',
+          'end_date',
+          'event_type_id'] as $key
+        ) {
+          if (!empty($params[$key]) && $events[$key] != $params[$key]) {
+            $createUpdateGCal = TRUE;
+            break;
+          }
+        }
       }
       if (!empty($createUpdateGCal)) {
         CRM_Core_Smarty::singleton()->assign('createUpdateGCal', $createUpdateGCal);

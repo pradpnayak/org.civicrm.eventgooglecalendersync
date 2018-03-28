@@ -68,12 +68,15 @@ class CRM_Eventgooglecalendersync_Utils {
    */
   static function buildEventParams($eventId) {
     $events = civicrm_api3('event', 'getsingle', ['id' => $eventId]);
-    if (empty($events['is_public']) || empty($events['is_active'])) {
+    if (empty($events['is_public'])
+      || empty($events['is_active'])
+      || empty($events['end_date'])
+    ) {
       return NULL;
     }
     $eventParams = [
       'summary' => $events['title'],
-      'colorId' => $events['description'],
+      'colorId' => $events['event_type_id'] % 10,
       'description' => $events['description'],
     ];
     $timeZone = date_default_timezone_get();
