@@ -19,4 +19,3 @@ CiviCRM Event can be integrated with Google Calendar.
 * Configure Google Auth details in Administer >> System Settings >> Googlecal Settings(civicrm/googlecal/settings?reset=1)
 ![Screenshot of civicrm setting](images/civi_google_group_setting.png)
 ![Screenshot of civicrm google connect](images/3.png)
-![Screenshot of civicrm googlecal setting](images/group_setting.png)
